@@ -4,86 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@400;600&display=swap');
-
-        body {
-            font-size: 16px;
-            text-align: center;
-            background-color: #f8faff;
-        }
-
-        .s {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        span {
-            font-size: 60px;
-            font-weight: 600;
-            display: block;
-            font-family: 'Baloo Chettan 2';
-            color: #235789;
-            margin-bottom: 20px;
-        }
-        .bubbly-button{
-            display: inline-block;
-            font-size: 18px;
-            font-family: 'Baloo Chettan 2', cursive;
-            padding: 14px 30px;
-            margin-top: 0px;
-            margin-bottom: 60px;
-            -webkit-appearance: none;
-            appearance: none;
-            background-color: #ff0081;
-            color: #fff;
-            border-radius: 4px;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            position: relative;
-            transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
-            box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-        }
-        
-        .bubbly-button:before, .bubbly-button:after{
-            position: absolute;
-            /* content: ''; */
-            display: block;
-            width: 140%;
-            height: 100%;
-            left: -20%;
-            z-index: -1000;
-            transition: all ease-in-out 0.5s;
-            background-repeat: no-repeat;
-        }
-        
-        .bubbly-button:active{
-            transform: scale(0.9);
-            background-color: darken(#ff0081, 5%);
-            box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
-        }
-    </style>
+    <title>Click</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h2>Repeat 100 times</h2>
+    <div class="words">
+        <div class="elem">
+            <p>First</p>
+            <div class="content">
+                La 'ilaaha 'illallahu wahdahu laa shareeka lahu,
+                lahul-mulku wa-hamdu, wa Huwa 'alaa kulli shay'in Qadeer
+            </div>
+        </div>
+        <div class="elem">
+            <p>Second</p>
+            <div class="content">
+                Астағфируллаһ ғазым уа тубу илайк
+            </div>
+        </div>
+    </div>
     <div class="s">
         <span>1</span>
         <button class="bubbly-button">Click me!</button>
     </div>
     <script>
-        var btn = document.getElementsByClassName('bubbly-button')[0];
-        var span = document.getElementsByTagName('span')[0];
+        let btn = document.getElementsByClassName('bubbly-button')[0];
+        let span = document.getElementsByTagName('span')[0];
+        let elem = document.getElementsByClassName('elem');
 
         btn.onclick = function() {
             span.innerHTML = Number(span.innerHTML) + 1;
         }
+
+        for(var i=0; i<elem.length; i++) {
+            elem[i].onclick = function() {
+                this.children[1].classList.toggle('block');
+            }
+        }
+        // document.getElementsByClassName('elem').onclick = function() {
+        //     this.children[1].classList.toggle('block');
+        // }
     </script>
 </body>
 </html>
